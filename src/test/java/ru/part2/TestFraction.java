@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class TestFraction {
 
     @Test
-    public void TestFractionCache() {
+    public void TestFractionCache() throws InterruptedException {
         Fractionable f1 = new Fraction(1,2);
         f1 = Utils.cache(f1);
         Assertions.assertEquals(0, f1.getCountTest());
@@ -39,5 +39,15 @@ public class TestFraction {
         Assertions.assertEquals(1, f1.getCountTest());
         Assertions.assertEquals(3, f1.doubleValue());
         Assertions.assertEquals(1, f1.getCountTest());
+
+        Thread.sleep(1500);
+        Assertions.assertEquals(0, f1.getCountTest());
+        Assertions.assertEquals(3, f1.doubleValue());
+        Assertions.assertEquals(1, f1.getCountTest());
+        Assertions.assertEquals(3, f1.doubleValue());
+        Assertions.assertEquals(1, f1.getCountTest());
+        Assertions.assertEquals(3, f1.doubleValue());
+        Assertions.assertEquals(1, f1.getCountTest());
+
     }
 }
