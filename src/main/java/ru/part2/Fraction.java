@@ -24,7 +24,6 @@ public class Fraction implements Fractionable{
     }
 
     @Cache(1500)
-    //@Cache(0)
     public double doubleValue(){
         countTest++;
         return (double) num/denum;
