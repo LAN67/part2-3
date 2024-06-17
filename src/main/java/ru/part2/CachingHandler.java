@@ -9,7 +9,8 @@ import java.util.TimerTask;
 
 public class CachingHandler<T> implements InvocationHandler {
     private T currentObject;
-    private Map<Method, Object> results = new HashMap<>();
+    private Map<Method, Object> state = new HashMap<>();
+    private Map<Object, Map<Method, Object>> results = new HashMap<>();
 
     private Timer timer;
     private boolean timerRun = false;
@@ -26,7 +27,7 @@ public class CachingHandler<T> implements InvocationHandler {
 
         currentMethod = currentObject.getClass().getMethod(method.getName(), method.getParameterTypes());
         if (currentMethod.isAnnotationPresent(Mutator.class)) {
-            clearCache();
+            state.put(currentMethod, args[0]);
         }
         if (currentMethod.isAnnotationPresent(Cache.class)) {
             delayCache = currentMethod.getAnnotation(Cache.class).value();
@@ -44,11 +45,19 @@ public class CachingHandler<T> implements InvocationHandler {
                     }
                 }, delayCache);
             }
-            if (results.containsKey(currentMethod)) {
-                return results.get(currentMethod);
+            if (results.containsKey(state)) {
+                if (results.get(state).containsKey(currentMethod)) {
+                    return results.get(state).get(currentMethod);
+                } else {
+                    objectResult = method.invoke(currentObject, args);
+                    results.get(state).put(currentMethod, objectResult);
+                    return objectResult;
+                }
             }
             objectResult = method.invoke(currentObject, args);
-            results.put(currentMethod, objectResult);
+            Map<Method, Object> val = new HashMap<>();
+            val.put(currentMethod, objectResult);
+            results.put(state, val);
             return objectResult;
         }
         return method.invoke(currentObject, args);
