@@ -13,31 +13,5 @@ public class Utils {
                 objectIncome.getClass().getClassLoader(),
                 objectIncome.getClass().getInterfaces(),
                 new CachingHandler(objectIncome));
-        //new Cache2(objectIncome));
     }
 }
-
-//class Cache2 implements InvocationHandler {
-//    Object obj;
-//    private boolean isChanged = true;
-//    private Object tmp = null;
-//
-//    public Cache2(Object obj) {
-//        this.obj = obj;
-//    }
-//
-//    @Override
-//    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//        if (method.isAnnotationPresent(Mutator.class)) {
-//            isChanged = true;
-//        }
-//        if (method.isAnnotationPresent(Cache.class)) {
-//            if (isChanged) {
-//                tmp = method.invoke(obj, args);
-//                isChanged = false;
-//            }
-//            return tmp;
-//        }
-//        return method.invoke(obj, args);
-//    }
-//}
