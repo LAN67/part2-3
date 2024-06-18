@@ -1,5 +1,7 @@
 package ru.part2;
 
+import java.util.Objects;
+
 public class Fraction implements Fractionable{
     private int num;
     private int denum;

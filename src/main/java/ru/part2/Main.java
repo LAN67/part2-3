@@ -51,7 +51,7 @@ public class Main {
         System.out.println(f1.doubleValue());
         System.out.println("count=" + f1.getCountTest());
 
-        System.out.println("==== sleep");
+        System.out.println("==== sleep ==============================");
         Thread.sleep(2000);
         System.out.println("count=" + f1.getCountTest());
         System.out.println(f1.doubleValue());
@@ -66,5 +66,36 @@ public class Main {
         System.out.println("count=" + f1.getCountTest());
         System.out.println(f1.doubleValue());
         System.out.println("count=" + f1.getCountTest());
+
+        System.out.println("=== num=1 denum=6");
+        f1.setNum(1);
+        f1.setDenum(6);
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+
+        System.out.println("=== num=1 denum=3");
+        f1.setNum(1);
+        f1.setDenum(3);
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
+        System.out.println(f1.doubleValue());
+        System.out.println("count=" + f1.getCountTest());
     }
+
 }
