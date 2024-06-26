@@ -1,9 +1,11 @@
 package ru.part2;
 
+import java.time.Instant;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("=== num=1, denum=3");
-        Fractionable f1 = Utils.cache(new Fraction(0,0));
+        Fractionable f1 = Utils.cache(new Fraction(0,0), 10);
         f1.setNum(1);
         f1.setDenum(3);
         System.out.println("count=" + f1.getCountTest());
@@ -96,6 +98,7 @@ public class Main {
         System.out.println("count=" + f1.getCountTest());
         System.out.println(f1.doubleValue());
         System.out.println("count=" + f1.getCountTest());
+
     }
 
 }
